@@ -1,7 +1,6 @@
 from .DBConnection import DBConnection
 
 necessary_table_to_create = {
-
     "subject_info":
         """
             CREATE TABLE subject_info
@@ -11,7 +10,6 @@ necessary_table_to_create = {
                 score FLOAT
             );
         """
-        
 }
 
 class DBInitializer:

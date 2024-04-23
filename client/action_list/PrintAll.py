@@ -5,17 +5,17 @@ class PrintAll:
         self.client = client
 
     def execute(self):
-        keep_going_dict = self.retrieve_all_students()
-        self.display_students(keep_going_dict)
+        keep_going_dict = self.client_print()
+        self.print(keep_going_dict)
 
-    def retrieve_all_students(self):
+    def client_print(self):
         self.client.send_command("show", student_dict={})
         raw_data = self.client.wait_response()
         keep_going_dict = json.loads(raw_data)
 
         return keep_going_dict
 
-    def display_students(self, keep_going_dict):
+    def print(self, keep_going_dict):
         print ("\n==== student list ====\n")
         for name, info in keep_going_dict['parameters'].items():
             print("Name: {}".format(name))

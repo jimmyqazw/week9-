@@ -4,14 +4,14 @@ class DelStu:
         self.client = client
 
     def execute(self):
-        self.get_student_name()
-        self.query_student_before_deletion()
+        self.get_name()
+        self.client_query()
         answer = input("  Confirm to delete (y/n): ")
         if answer =='y':
-            self.delete_student()
+            self.client_del()
             print("    Del success")
 
-    def get_student_name(self):
+    def get_name(self):
         name = input("  Please input a student's name or exit: ")
         if name == "exit":
             print("    exit")
@@ -19,10 +19,10 @@ class DelStu:
         else:
             self.student_dict = {'name' : name}
 
-    def query_student_before_deletion(self):
+    def client_query(self):
         self.client.send_command("query", self.student_dict)
         self.client.wait_response()
 
-    def delete_student(self):
+    def client_del(self):
         self.client.send_command("del", self.student_dict)
         self.client.wait_response()

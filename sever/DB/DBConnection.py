@@ -9,6 +9,7 @@ class DBConnection:
     def __init__(self):
         DBConnection.db_lock.acquire()
         self.connection = sqlite3.connect(self.db_file_path)
+        # Sets the row_factory to the callable sqlite3.Row, which converts the plain tuple into a more useful object.
         self.connection.row_factory = sqlite3.Row
 
     def __enter__(self):
