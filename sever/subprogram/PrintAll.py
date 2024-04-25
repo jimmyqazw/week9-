@@ -1,4 +1,4 @@
-from DB.StudentInfoTable import StudentInfoTable
+from DB.Info import StudentInfo
 class PrintAll:
     def __init__(self, parameters):
         self.parameters = parameters
@@ -9,7 +9,7 @@ class PrintAll:
         return reply_data
 
     def get_students_dict(self):
-        student_records= StudentInfoTable().select_all_students()
+        student_records= StudentInfo().select_all_students()
         students_dict = {}
 
         for entry in student_records:

@@ -1,4 +1,4 @@
-from DB.StudentInfoTable import StudentInfoTable
+from DB.Info import StudentInfo
 class Query:
     def __init__(self, parameters):
         self.parameters = parameters
@@ -9,7 +9,7 @@ class Query:
         return reply_msg
 
     def get_dict(self):
-        student_records = StudentInfoTable().select_all_students()
+        student_records = StudentInfo().select_all_students()
         students_dict = {}
 
         for entry in student_records:

@@ -1,4 +1,4 @@
-from DB.StudentInfoTable import StudentInfoTable
+from DB.Info import StudentInfo
 class AddStu:
     def __init__(self, parameters):
         self.parameters = parameters
@@ -9,7 +9,7 @@ class AddStu:
         return reply_msg
 
     def get_students_dict(self):
-        student_records = StudentInfoTable().select_all_students()
+        student_records = StudentInfo().select_all_students()
         students_dict = {}
 
         for entry in student_records:
@@ -28,5 +28,5 @@ class AddStu:
 
         if name in students_dict:
             return {'status': 'Fail', 'reason': 'The name already exists.'}
-        StudentInfoTable().insert_a_student(name, scores)
+        StudentInfo().insert_a_student(name, scores)
         return {'status': 'OK'}

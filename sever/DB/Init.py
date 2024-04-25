@@ -1,4 +1,4 @@
-from .DBConnection import DBConnection
+from .Connect import Connection
 
 necessary_table_to_create = {
     "subject_info":
@@ -12,13 +12,13 @@ necessary_table_to_create = {
         """
 }
 
-class DBInitializer:
+class Initialization:
     def execute(self):
         existing_tables = self.get_existing_tables()
         self.create_not_exist_table(existing_tables)
 
     def get_existing_tables(self):
-        with DBConnection() as connection:
+        with Connection() as connection:
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM sqlite_master WHERE type='table'")
             records = cursor.fetchall()
@@ -31,7 +31,7 @@ class DBInitializer:
                 self.create_table_with_specefied_command(table_creating_command)
 
     def create_table_with_specefied_command(self, command):
-        with DBConnection() as connection:
+        with Connection() as connection:
             cursor = connection.cursor()
             cursor.execute(command)
             connection.commit()

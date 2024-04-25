@@ -1,4 +1,4 @@
-from DB.StudentInfoTable import StudentInfoTable
+from DB.Info import StudentInfo
 class ModifyStu:
     def __init__(self, parameters):
         self.parameters = parameters
@@ -10,6 +10,6 @@ class ModifyStu:
     def modify(self):
         name = self.parameters['name']
         scores = self.parameters['scores']
-        StudentInfoTable().update_a_student(name, scores)
+        StudentInfo().update_a_student(name, scores)
 
         return {'status': 'OK'}
